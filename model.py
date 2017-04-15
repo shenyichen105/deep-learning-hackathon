@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
 from keras.preprocessing import image
 
@@ -20,7 +19,7 @@ def combined_loss(y_true, y_pred):
     return losses.mean_squared_error(y_true, y_pred)+ losses.binary_crossentropy(y_true, y_pred)
 
 #normalize the scale of color to 0-1 range
-train_datagen = image.ImageDataGenerator(featurewise_center = True, rescale=1./255)
+train_datagen = image.ImageDataGenerator(rescale=1./255)
 train_generator = train_datagen.flow_from_directory(
         'data',
         class_mode = None,
